@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <style>
+      .urlAccess{
+        display:block;
+      }
+      p:not(.urlAccess):not(.allView){ /*allViewクラスにもurlAccessクラスにも入っていない場合*/
+        display:none;
+      }
+    </style>
+  </head>
+  <body>
+    <p class>This page is a pseudo-page for API use.</p>
+    <a id="dl" download></a>
+    <script>
+      //作りかけ
+      const allow=[
+        "https://ks-seed0310.github.io",
+        "http://ks-seed0310.github.io",
+        "https://ochcinfo.github.io",
+        "http://ochcinfo.github.io",
+        "https://ioself.github.io",
+        "http://ioself.github.io"
+      ]
+      function f(){
+        window.addEventListener('message',e=>{
+          if (!allow.includes(e.origin)){
+            return
+          }
+          event.source.postMessage
+        })
+      }
+      if (window.parent===window||window.top===window){
+        console.error("This page is a pseudo-page for API use.")
+      }else{
+        f()
+      }
+    </script>
+  </body>
+</html>
