@@ -32,7 +32,7 @@
         dl.href=e.data.url??""
         dl.click()
         let submitData
-        event.source.postMessage(submitData,e.origin)
+        e.source.postMessage(submitData,e.origin)
       })
       if (window.parent===window||window.top===window){
         console.error("This page is a pseudo-page for API use.")
