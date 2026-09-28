@@ -12,7 +12,7 @@
     </style>
   </head>
   <body>
-    <p class>This page is a pseudo-page for API use.</p>
+    <p id="page" class>This page is a pseudo-page for API use.</p>
     <a id="dl" download></a>
     <script>
       //作りかけ
@@ -24,18 +24,21 @@
         "https://ioself.github.io",
         "http://ioself.github.io"
       ]
-      function f(){
-        window.addEventListener('message',e=>{
-          if (!allow.includes(e.origin)){
-            return
-          }
-          event.source.postMessage
-        })
-      }
+      const dl=document.getElementById("dl")
+      window.addEventListener('message',async e=>{
+        if (!allow.includes(e.origin)){
+          return
+        }
+        dl.href=e.data.url??""
+        dl.click()
+        let submitData
+        event.source.postMessage(submitData,e.origin)
+      })
       if (window.parent===window||window.top===window){
         console.error("This page is a pseudo-page for API use.")
+        document.getElementById("page").classList.add("urlAccess")
       }else{
-        f()
+        
       }
     </script>
   </body>
